@@ -1,0 +1,43 @@
+; A line with just a comment.
+00:0000 NULL
+00:0100 EntryPoint ; Symbols can have comments too
+;00:0150 OldMain (comments are ignored, obviously)
+        ; Whitespace before comments is valid
+ 	   ; So is mixed whitespace, actually
+
+ 00:1234 Main ; ^ empty lines are ignored
+  		 
+	00:0038 CrashHandler ; ^ lines with just whitespace are also ignored
+; Oh, and lines can have leading and/or trailing whitespace, too.
+ 00:0030 CallHL 
+
+cafe UnicodeSupport\u203d
+babe AsciiToo\u003c\U00000033
+0000 Nul\u0000Terminator
+
+roflcopter ; Lines containing a single token are reserved for future extensions
+01:8000 NotInVRAM ROMX ; Tokens past the first two are metadata, and are ignored by the parser
+; Boot ROM symbols!
+BOOT:0072 RTile
+BoOt:007a RTile.end
+; Symbols can be outside of the boot ROM itself:
+BOOT:D000 wWorkRam ; There is no way to specify which target bank this applies to, though
+
+; Unbanked symbols!
+C0DE SomeAddress
+dEaD LowerHexWorksToo
+
+; Here come the syntax errors
+$0:1234 NoPrefix
+:1234 NoBank
+00: NoAddr
+12345 TooLarge
+0 Bad!Chars
+0 1BadFirstChar
+0 : 1 TooMuchSpacing
+0 NoInlineUnicode‽
+0 NotEnoughUnicode\u203
+0 StillNotEnoughUnicode\U0001234
+0 Bad\Escape
+0 NoEscape\
+0 NoComment\; This is indeed a comment
