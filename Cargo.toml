@@ -1,8 +1,9 @@
 [package]
 name = "gb-sym-file"
 description = "A parser for Game Boy sym files, fully conformant to the spec."
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
+authors = ["Eldred Habert <rust@eldred.fr>"]
 license = "MPL-2.0"
 repository = "https://github.com/ISSOtm/gb-sym-file"
 keywords = ["game-boy", "gb", "symbol", "sym", "parser"]

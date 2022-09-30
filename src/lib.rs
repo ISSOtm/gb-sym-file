@@ -20,7 +20,8 @@ use std::num::ParseIntError;
 pub type Symbols = HashSet<(String, Location)>;
 /// This is a convenience for when you expect to only refer to symbols by name. Prefer [`Symbols`] otherwise.
 ///
-/// Using it means possible data loss, since there may be different
+/// Using it means possible data loss, since there may be different symbols with identical names.
+/// If your use case refers to symbols primarily by name, and silently resolving ambiguities to a single one is fine, then you can use this.
 pub type UniquelyNamedSyms = HashMap<String, Location>;
 
 #[derive(Debug, PartialEq, Eq, Hash)]
